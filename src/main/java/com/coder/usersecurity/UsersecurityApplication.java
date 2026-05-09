@@ -1,0 +1,15 @@
+package com.coder.usersecurity;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class UsersecurityApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(UsersecurityApplication.class, args);
+		System.out.println("---UserSecurity Application Started---");
+
+	}
+
+}
