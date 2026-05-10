@@ -8,8 +8,7 @@ public class UsersecurityApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UsersecurityApplication.class, args);
-		System.out.println("---UserSecurity Application Started Now---");
-
+		System.out.println("---UserSecurity Application Started---");
 	}
 
 }
