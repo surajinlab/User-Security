@@ -3,19 +3,24 @@ package com.coder.usersecurity.model;
 import jakarta.persistence.*;
 
 @Entity
-public class MyUser {
+@Table(name = "users")
+public class User {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long id;
-    private String username;
-    private String password;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public long getId() {
+    @Column(unique = true)
+    private String username;
+
+    private String password;
+    private String role;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -35,12 +40,21 @@ public class MyUser {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
-        return "MyUser{" +
+        return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
                 '}';
     }
 }
