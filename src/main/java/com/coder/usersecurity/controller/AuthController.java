@@ -2,6 +2,7 @@ package com.coder.usersecurity.controller;
 
 import com.coder.usersecurity.model.User;
 import com.coder.usersecurity.repository.UserRepository;
+import com.coder.usersecurity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,18 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     @Autowired
-    private UserRepository repository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    UserService service;
 
     @PostMapping("/register")
-    public String register(@RequestBody User user) {
+    public User register(@RequestBody User user) {
+        System.out.println("User Registered Successfully");
 
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        repository.save(user);
-
-        return "User Registered Successfully";
+        return service.registration(user);
     }
 
     @GetMapping("/admin/dashboard")
