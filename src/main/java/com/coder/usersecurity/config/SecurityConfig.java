@@ -17,6 +17,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
+                .csrf(csrf -> csrf.disable())       // remove when you use frontend like react
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/register").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
@@ -27,6 +28,9 @@ public class SecurityConfig {
                 .httpBasic(Customizer.withDefaults());
 
         return http.build();
+
+
+
     }
 
     @Bean
@@ -34,3 +38,4 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 }
+
